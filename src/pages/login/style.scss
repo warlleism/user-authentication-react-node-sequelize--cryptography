@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+* {
+
+    input::-ms-reveal,
+    input::-ms-clear {
+        display: none;
+    }
+}
+
+.main-conteiner-login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .contaiener-login-register {
+        width: 900px;
+        height: 600px;
+        display: flex;
+        overflow: hidden;
+        border-radius: 5px;
+        background-color: #fff;
+
+        .eye {
+            font-size: 40px;
+        }
+
+        div:nth-child(1) {
+            width: 50%;
+            display: flex;
+            position: relative;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+
+            .cadastro {
+                top: 30px;
+                right: -40px;
+                cursor: pointer;
+                font-weight: 700;
+                color: #2c2c2c;
+                position: absolute;
+                text-transform: uppercase;
+                animation: content 2s infinite;
+
+            }
+
+            @keyframes content {
+                0% {
+                    color: #2c2c2c;
+                }
+
+                50% {
+                    color: #c5c5c5;
+                }
+
+                100% {
+                    color: #2c2c2c;
+                }
+            }
+
+            h2 {
+                color: #2c2c2c;
+                font-weight: 400;
+            }
+
+            .input-conteiner {
+                width: 70%;
+                display: flex;
+                margin-top: 40px;
+                position: relative;
+                flex-direction: column;
+                transition: 1s ease-in-out;
+
+
+                .eye {
+                    top: -7px;
+                    right: 8px;
+                    font-size: 25px;
+                    cursor: pointer;
+                    position: absolute;
+                }
+
+                span {
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    margin-bottom: 10px;
+                    color: rgba(10, 10, 10, 0.815);
+                }
+
+                input {
+                    border: none;
+                    outline: none;
+                    width: 300px;
+                    font-size: 1.2rem;
+                    position: relative;
+                    border-bottom: 1px rgba(0, 0, 0, 0.267) solid;
+                }
+            }
+
+            .buttom {
+                width: 70%;
+                padding: 5px;
+                color: #fff;
+                margin-top: 30px;
+                font-size: 1.5rem;
+                text-align: center;
+                border-radius: 5px;
+                background: #382e89;
+            }
+
+        }
+
+        div:nth-child(2) {
+            width: 50%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
