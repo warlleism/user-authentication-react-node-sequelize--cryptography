@@ -66,6 +66,8 @@ const Login = () => {
                         icon: 'success',
                         title: 'cadastrado com sucesso!',
                     })
+
+                    setField(true)
                 } else {
                     Swal.fire({
                         icon: 'info',
@@ -76,9 +78,9 @@ const Login = () => {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         setAuth(false)
-    },[])
+    }, [])
 
     return (
         <div className="main-conteiner-login">
