@@ -11,7 +11,6 @@ const CreateUser = async (req, res) => {
     if (user)
         return res.status(200).send({ error: 'User early existis ' });
 
-
     try {
 
         const hash = crypto
