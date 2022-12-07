@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { Context } from "../../context/provider";
 import $ from 'jquery'
 import "./style.scss"
 
@@ -9,7 +11,7 @@ const Login = () => {
 
     const [senhas, setSenha] = useState()
     const [email, setEmail] = useState()
-
+    const { auth, setAuth } = useContext(Context);
     const [field, setField] = useState(true)
 
     var senha = $('#senha');
@@ -36,9 +38,13 @@ const Login = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.status == 200) {
-                    console.log("Usuário existe")
+                    setAuth(true)
+                    navigate('/logado')
                 } else {
-                    console.log("Usuário não existe")
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Senha ou email invalido',
+                    })
                 }
             })
     }
@@ -53,19 +59,29 @@ const Login = () => {
         };
 
         await fetch('http://localhost:3003/create', options)
-        .then(res => res.json())
-        .then(data => {
-            if (data.status == 200) {
-                console.log("Usuário cadastrado com sucesso")
-            } else {
-                console.log("Usuario já existe")
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status == 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'cadastrado com sucesso!',
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Email já existe.',
+                    })
+                }
+            })
     }
+
+
+    useEffect(()=>{
+        setAuth(false)
+    },[])
 
     return (
         <div className="main-conteiner-login">
-
             {
                 field == true
                     ?
