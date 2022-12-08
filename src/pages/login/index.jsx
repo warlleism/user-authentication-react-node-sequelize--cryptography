@@ -25,7 +25,10 @@ const Login = () => {
         senha.attr("type", "password");
     });
 
-    const login = async () => {
+    const login = async (event) => {
+
+        event.preventDefault()
+
         const options = {
             body: JSON.stringify({ email: email, senha: senhas }),
             method: 'POST',
@@ -49,7 +52,10 @@ const Login = () => {
             })
     }
 
-    const cadastrar = async () => {
+    const cadastrar = async (event) => {
+
+        event.preventDefault()
+
         const options = {
             body: JSON.stringify({ email: email, senha: senhas }),
             method: 'POST',
@@ -77,7 +83,6 @@ const Login = () => {
             })
     }
 
-
     useEffect(() => {
         setAuth(false)
     }, [])
@@ -87,7 +92,7 @@ const Login = () => {
             {
                 field == true
                     ?
-                    <div className="contaiener-login-register">
+                    <form action={(e) => login(e)} className="contaiener-login-register">
                         <div>
                             <div className="cadastro" onClick={() => setField(!field)}>sign-up</div>
                             <h2>Sign in</h2>
@@ -104,13 +109,13 @@ const Login = () => {
                                     </section>
                                 </div>
                             </div>
-                            <div className="buttom" onClick={() => login()}>Login</div>
+                            <button className="buttom" type="submit" onClick={(e) => login(e)}>Login</button>
                         </div>
 
                         <div>
                             <img src={require('../../image/border.png')} alt="" />
                         </div>
-                    </div>
+                    </form>
                     :
                     false
             }
@@ -118,7 +123,7 @@ const Login = () => {
             {
                 field == false
                     ?
-                    <div className="contaiener-login-register">
+                    <form action={(e) => cadastrar(e)} className="contaiener-login-register">
                         <div>
                             <div className="cadastro" onClick={() => setField(!field)}>sign-in</div>
                             <h2>Sign up</h2>
@@ -135,12 +140,12 @@ const Login = () => {
                                     </section>
                                 </div>
                             </div>
-                            <div className="buttom" onClick={() => cadastrar()}>Sign up</div>
+                            <button className="buttom" type="submit" onClick={(e) => cadastrar(e)}>Sign up</button>
                         </div>
                         <div>
                             <img src={require('../../image/border.png')} alt="" />
                         </div>
-                    </div>
+                    </form>
                     :
                     false
             }
